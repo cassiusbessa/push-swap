@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   circular_list.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 21:06:53 by caqueiro          #+#    #+#             */
+/*   Updated: 2024/01/10 21:06:55 by caqueiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+t_circular_list	*create_circular(void)
+{
+	t_circular_list	*cl;
+
+	cl = malloc(sizeof (t_circular_list));
+	if (cl != NULL)
+	{
+		cl->head = NULL;
+		cl->current = NULL;
+		cl->tail = NULL;
+	}
+	return (cl);
+}
+
+t_node	*create_node(int value)
+{
+	t_node	*nd;
+
+	nd = malloc(sizeof (t_node));
+	if (nd == NULL)
+		return (NULL);
+	nd->prev = NULL;
+	nd->value = value;
+	nd->next = NULL;
+	return (nd);
+}
+
+void	add_node(t_circular_list **cl, t_node *new_node)
+{
+	if (*cl == NULL)
+		*cl = create_circular();
+	if ((*cl)->head == NULL)
+	{
+		(*cl)->head = new_node;
+		(*cl)->current = new_node;
+		(*cl)->tail = new_node;
+		new_node->prev = new_node;
+		new_node->next = new_node;
+	}
+	else
+	{
+		new_node->prev = (*cl)->tail;
+		new_node->next = (*cl)->head;
+		(*cl)->tail->next = new_node;
+		(*cl)->tail = new_node;
+		(*cl)->head->prev = new_node;
+	}
+}
+
+void	destroy_circular(t_circular_list *cl)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (cl == NULL)
+		return ;
+	current = cl->head;
+	ft_printf("chamei o destruidor de lares\n");
+	while (current != NULL)
+	{
+		next = current->next;
+		ft_printf("liberando: %d\n", current->value);
+		free(current);
+		current = next;
+		if (current == cl->head)
+			break ;
+	}
+	free(cl);
+	cl = NULL;
+}
