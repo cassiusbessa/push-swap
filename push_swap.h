@@ -35,5 +35,7 @@ t_circular_list	*create_circular(void);
 void			add_node(t_circular_list **cl, t_node *new_node);
 void			destroy_circular(t_circular_list *cl);
 void			swap_cl(t_circular_list **cl);
+void    		push_cl(t_circular_list **cl1, t_circular_list **cl2);
+void			print_cl(t_circular_list *cl);
 
 #endif

@@ -69,11 +69,9 @@ void	destroy_circular(t_circular_list *cl)
 	if (cl == NULL)
 		return ;
 	current = cl->head;
-	ft_printf("chamei o destruidor de lares\n");
 	while (current != NULL)
 	{
 		next = current->next;
-		ft_printf("liberando: %d\n", current->value);
 		free(current);
 		current = next;
 		if (current == cl->head)
@@ -81,4 +79,23 @@ void	destroy_circular(t_circular_list *cl)
 	}
 	free(cl);
 	cl = NULL;
+}
+
+void	print_cl(t_circular_list *cl)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (cl == NULL)
+		return ;
+	current = cl->head;
+	while (current != NULL)
+	{
+		next = current->next;
+		ft_printf("%d\n", current->value);
+		current = next;
+		if (current == cl->head)
+			break ;
+	}
+	return ;
 }

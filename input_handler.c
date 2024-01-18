@@ -96,6 +96,7 @@ t_circular_list	*stack_creator(int len, char **input)
 int	main(int argc, char **argv)
 {
 	t_circular_list	*stack_a;
+	t_circular_list	*stack_b;
 
 	if	(argc < 2)
 	{
@@ -103,9 +104,11 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	stack_a = stack_creator(argc - 1, argv);
+	stack_b = create_circular();
 	swap_cl(&stack_a);
-	ft_printf("%d\n", stack_a->current->value);
-	ft_printf("%d\n", stack_a->current->next->value);
-	ft_printf("%d\n", stack_a->current->next->next->value);
+	push_cl(&stack_a, &stack_b);
+	print_cl(stack_a);
+	ft_printf("fim da lista a\n");
+	print_cl(stack_b);
 	destroy_circular(stack_a);
 }
