@@ -38,6 +38,7 @@ void			add_head(t_circular_list **cl, t_node *new_head);
 t_node			*remove_head(t_circular_list **cl);
 void			destroy_circular(t_circular_list *cl);
 void			rotate_cl(t_circular_list **cl);
+void			reverse_rotate_cl(t_circular_list **cl);
 void			push_cl(t_circular_list **cl1, t_circular_list **cl2);
 void			swap_cl(t_circular_list **cl);
 

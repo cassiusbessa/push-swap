@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 20:43:00 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/18 20:49:04 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:42:15 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,41 @@ void	add_head(t_circular_list **cl, t_node *new_head)
 	}
 }
 
+t_node	*remove_tail(t_circular_list **cl)
+{
+	t_node	*removed_node;
+
+	if (!(*cl) || !(*cl)->head || !(*cl)->tail || (*cl)->head == (*cl)->tail)
+		return (NULL);
+	removed_node = (*cl)->tail;
+	if ((*cl)->head->next == (*cl)->tail)
+	{
+		(*cl)->head->next = (*cl)->head;
+		(*cl)->tail->prev = (*cl)->tail;
+	}
+	else
+	{
+		(*cl)->tail->prev->next = (*cl)->head;
+		(*cl)->head->prev = (*cl)->tail->prev;
+	}
+	(*cl)->tail = (*cl)->tail->prev;
+	return (removed_node);
+}
+
+void	swap_cl(t_circular_list **cl)
+{
+	t_node	*first;
+	t_node	*second;
+
+	if (!(*cl) || !(*cl)->head || !(*cl)->tail
+		|| (*cl)->head == (*cl)->tail || !(*cl)->head->next)
+		return ;
+	first = remove_head(cl);
+	second = remove_head(cl);
+	add_head(cl, first);
+	add_head(cl, second);
+}
+
 void	push_cl(t_circular_list **cl1, t_circular_list **cl2)
 {
 	t_node	*node_to_push;
@@ -80,16 +115,12 @@ void	rotate_cl(t_circular_list **cl)
 	add_node(cl, swp);
 }
 
-void	swap_cl(t_circular_list **cl)
+void	reverse_rotate_cl(t_circular_list **cl)
 {
-	t_node	*first;
-	t_node	*second;
+	t_node	*swp;
 
-	if (!(*cl) || !(*cl)->head || !(*cl)->tail
-		|| (*cl)->head == (*cl)->tail || !(*cl)->head->next)
+	if (!(*cl) || !(*cl)->head || !(*cl)->tail || (*cl)->head == (*cl)->tail)
 		return ;
-	first = remove_head(cl);
-	second = remove_head(cl);
-	add_head(cl, first);
-	add_head(cl, second);
+	swp = remove_tail(cl);
+	add_head(cl, swp);
 }

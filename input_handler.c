@@ -105,7 +105,7 @@ int	main(int argc, char **argv)
 	}
 	stack_a = stack_creator(argc - 1, argv);
 	//stack_b = create_circular();
-	swap_cl(&stack_a);
+	reverse_rotate_cl(&stack_a);
 	/*push_cl(&stack_a, &stack_b);
 	push_cl(&stack_a, &stack_b);*/
 	print_cl(stack_a);
