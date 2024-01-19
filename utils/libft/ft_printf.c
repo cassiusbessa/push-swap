@@ -6,12 +6,11 @@
 /*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:32:32 by caqueiro          #+#    #+#             */
-/*   Updated: 2023/11/06 23:17:53 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:56:07 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 int	handle_print(char c, va_list args)
 {

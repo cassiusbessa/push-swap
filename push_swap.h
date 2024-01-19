@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:14 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/09 20:02:39 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:59:19 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ typedef struct s_circular_list
 
 t_node			*create_node(int value);
 t_circular_list	*create_circular(void);
-void			add_node(t_circular_list **cl, t_node *new_node);
-void			destroy_circular(t_circular_list *cl);
-void			swap_cl(t_circular_list **cl);
-void    		push_cl(t_circular_list **cl1, t_circular_list **cl2);
 void			print_cl(t_circular_list *cl);
+void			add_node(t_circular_list **cl, t_node *new_node);
+void			add_head(t_circular_list **cl, t_node *new_head);
+t_node			*remove_head(t_circular_list **cl);
+void			destroy_circular(t_circular_list *cl);
+void			rotate_cl(t_circular_list **cl);
+void			push_cl(t_circular_list **cl1, t_circular_list **cl2);
+void			swap_cl(t_circular_list **cl);
 
 #endif

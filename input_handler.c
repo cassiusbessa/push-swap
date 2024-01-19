@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:55:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/15 18:18:11 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/18 20:57:49 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,18 @@ int	main(int argc, char **argv)
 	t_circular_list	*stack_a;
 	t_circular_list	*stack_b;
 
-	if	(argc < 2)
+	if (argc < 2)
 	{
 		write(1, "Input not valid\n", 15);
 		return (0);
 	}
 	stack_a = stack_creator(argc - 1, argv);
-	stack_b = create_circular();
+	//stack_b = create_circular();
 	swap_cl(&stack_a);
-	push_cl(&stack_a, &stack_b);
+	/*push_cl(&stack_a, &stack_b);
+	push_cl(&stack_a, &stack_b);*/
 	print_cl(stack_a);
 	ft_printf("fim da lista a\n");
-	print_cl(stack_b);
+	//print_cl(stack_b);
 	destroy_circular(stack_a);
 }
