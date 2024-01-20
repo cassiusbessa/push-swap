@@ -12,7 +12,8 @@
 
 PUSH_SWAP_SRCS =	input_handler.c\
 					circular_list.c\
-					moviments.c
+					moviments.c\
+					handle_circular_list.c
 
 CHECKERS_SRCS = checker.c
 

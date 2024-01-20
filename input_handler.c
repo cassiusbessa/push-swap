@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:55:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/18 20:57:49 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:34:05 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	handle_atoi_error(t_circular_list *stack)
 {
-	write(1, "Input not valid", 15);
+	write(2, "Input not valid", 15);
 	destroy_circular(stack);
 	exit (0);
 }
@@ -48,7 +48,7 @@ static	void	build_list(t_circular_list **stack_a, char *s, char c)
 			free(temp);
 			if (n.err)
 				handle_atoi_error(*stack_a);
-			add_node(stack_a, create_node(n.value));
+			add_tail(stack_a, create_node(n.value));
 			s += skip;
 			ex++;
 			continue ;
@@ -86,7 +86,7 @@ t_circular_list	*stack_creator(int len, char **input)
 			n = ft_atoi(input[i]);
 			if (n.err)
 				handle_atoi_error(stack_a);
-			add_node(&stack_a, create_node(n.value));
+			add_tail(&stack_a, create_node(n.value));
 			i++;
 		}
 	}
@@ -106,6 +106,7 @@ int	main(int argc, char **argv)
 	stack_a = stack_creator(argc - 1, argv);
 	//stack_b = create_circular();
 	reverse_rotate_cl(&stack_a);
+	index_cl(&stack_a);
 	/*push_cl(&stack_a, &stack_b);
 	push_cl(&stack_a, &stack_b);*/
 	print_cl(stack_a);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:06:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/09 21:26:29 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:15:27 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 static int	n_validator(long long n)
 {
 	return (n <= 2147483647 && n >= -2147483648);
-}
-
-static int	char_validator(char c)
-{
-	return (ft_isdigit(c));
 }
 
 static t_int_valid	atoi_error(void)
@@ -47,9 +42,9 @@ t_int_valid	ft_atoi(const char *nptr)
 		minus = minus * -1;
 		i++;
 	}
-	while (nptr[i] && (nptr[i] >= '0' && nptr[i] <= '9'))
+	while (nptr[i])
 	{
-		if (!char_validator(nptr[i])
+		if (!ft_isdigit(nptr[i])
 			|| !n_validator((long long)n.value * 10 + (nptr[i] - '0')))
 			return (atoi_error());
 		n.value = n.value * 10 + (nptr[i] - '0');

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   circular_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:06:53 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/18 20:58:33 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/19 19:39:22 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,8 @@ t_node	*create_node(int value)
 	nd->prev = NULL;
 	nd->value = value;
 	nd->next = NULL;
+	nd->index = -1;
 	return (nd);
-}
-
-void	add_node(t_circular_list **cl, t_node *new_node)
-{
-	if (*cl == NULL)
-		*cl = create_circular();
-	if ((*cl)->head == NULL)
-	{
-		(*cl)->head = new_node;
-		(*cl)->current = new_node;
-		(*cl)->tail = new_node;
-		new_node->prev = new_node;
-		new_node->next = new_node;
-	}
-	else
-	{
-		new_node->prev = (*cl)->tail;
-		new_node->next = (*cl)->head;
-		(*cl)->tail->next = new_node;
-		(*cl)->tail = new_node;
-		(*cl)->head->prev = new_node;
-	}
 }
 
 void	destroy_circular(t_circular_list *cl)
@@ -92,10 +71,32 @@ void	print_cl(t_circular_list *cl)
 	while (current != NULL)
 	{
 		next = current->next;
-		ft_printf("%d\n", current->value);
+		ft_printf("value:%d, index:%d\n", current->value, current->index);
 		current = next;
 		if (current == cl->head)
 			break ;
 	}
 	return ;
+}
+
+void	add_tail(t_circular_list **cl, t_node *new_node)
+{
+	if (*cl == NULL)
+		*cl = create_circular();
+	if ((*cl)->head == NULL)
+	{
+		(*cl)->head = new_node;
+		(*cl)->current = new_node;
+		(*cl)->tail = new_node;
+		new_node->prev = new_node;
+		new_node->next = new_node;
+	}
+	else
+	{
+		new_node->prev = (*cl)->tail;
+		new_node->next = (*cl)->head;
+		(*cl)->tail->next = new_node;
+		(*cl)->tail = new_node;
+		(*cl)->head->prev = new_node;
+	}
 }
