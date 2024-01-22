@@ -20,8 +20,8 @@ t_circular_list	*create_circular(void)
 	if (cl != NULL)
 	{
 		cl->head = NULL;
-		cl->current = NULL;
 		cl->tail = NULL;
+		cl->size = 0;
 	}
 	return (cl);
 }
@@ -86,7 +86,6 @@ void	add_tail(t_circular_list **cl, t_node *new_node)
 	if ((*cl)->head == NULL)
 	{
 		(*cl)->head = new_node;
-		(*cl)->current = new_node;
 		(*cl)->tail = new_node;
 		new_node->prev = new_node;
 		new_node->next = new_node;
@@ -99,4 +98,5 @@ void	add_tail(t_circular_list **cl, t_node *new_node)
 		(*cl)->tail = new_node;
 		(*cl)->head->prev = new_node;
 	}
+	(*cl)->size++;
 }

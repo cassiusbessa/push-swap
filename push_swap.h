@@ -26,9 +26,9 @@ typedef struct s_node
 
 typedef struct s_circular_list
 {
-	t_node	*head;
-	t_node	*current;
-	t_node	*tail;
+	t_node			*head;
+	unsigned int	size;
+	t_node			*tail;
 }	t_circular_list;
 
 t_node			*create_node(int value);

@@ -30,6 +30,7 @@ t_node	*remove_head(t_circular_list **cl)
 		(*cl)->head->prev = (*cl)->tail;
 		(*cl)->tail->next = (*cl)->head;
 	}
+	(*cl)->size--;
 	return (node_to_remove);
 }
 
@@ -52,6 +53,7 @@ void	add_head(t_circular_list **cl, t_node *new_head)
 		(*cl)->tail->next = new_head;
 		(*cl)->head = new_head;
 	}
+	(*cl)->size++;
 }
 
 t_node	*remove_tail(t_circular_list **cl)
@@ -72,50 +74,48 @@ t_node	*remove_tail(t_circular_list **cl)
 		(*cl)->head->prev = (*cl)->tail->prev;
 	}
 	(*cl)->tail = (*cl)->tail->prev;
+	(*cl)->size--;
 	return (removed_node);
 }
 
-static t_node	*get_min_node(t_circular_list *cl)
+static t_node	*get_min_node(t_node *n)
 {
 	t_node	*current;
-	t_node	*next;
 	t_node	*min;
 
-	if (cl == NULL)
+	if (n == NULL)
 		return (NULL);
-	min = cl->head;
-	current = cl->head;
-	while (current != NULL)
+	min = n;
+	current = n->next;
+	while (current != n)
 	{
-		next = current->next;
-		if (current->index == -1 && current->value < (*min).value)
+		if (current->index == -1 && current->value < min->value)
 			min = current;
-		current = next;
-		if (current == cl->head)
-			break ;
+		current = current->next;
 	}
-	return (min);
+	if (min && min->index == -1)
+		return (min);
+	else
+		return (NULL);
 }
 
 void	index_cl(t_circular_list **cl)
 {
-	t_node	*current;
-	t_node	*next;
-	t_node	*min;
-	int		i;
+	t_node			*current;
+	t_node			*min;
+	unsigned int	i;
+	unsigned int	size;
 
-	if (cl == NULL)
+	if (*cl == NULL || !(*cl)->head)
 		return ;
 	i = 0;
-	min = NULL;
+	size = (*cl)->size;
 	current = (*cl)->head;
-	while (current != NULL)
+	while (i < size)
 	{
-		next = current->next;
-		get_min_node(*cl)->index = i;
-		current = next;
-		i++;
-		if (current == (*cl)->head)
-			break ;
+		min = get_min_node(current);
+		if (min)
+			min->index = i++;
+		current = current->next;
 	}
 }
