@@ -46,5 +46,6 @@ void			push_cl(t_circular_list **cl1, t_circular_list **cl2);
 void			swap_cl(t_circular_list **cl);
 void			index_cl(t_circular_list **cl);
 unsigned int	node_max_bits(t_circular_list *cl);
+void    radix(t_circular_list **stack_a, t_circular_list **stack_b);
 
 #endif

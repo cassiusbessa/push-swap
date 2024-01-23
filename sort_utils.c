@@ -56,13 +56,16 @@ void	index_cl(t_circular_list **cl)
 unsigned int	node_max_bits(t_circular_list *cl)
 {
 	unsigned int	i;
+	unsigned int	value;
+
 	if (!cl || !cl->head || !cl->tail || cl->head == cl->tail)
 		return (0);
 	i = 0;
-	while (cl->bigger->value)
+	value = cl->bigger->value;
+	while (value)
 	{
 		i++;
-		cl->bigger->value >>= 1;
+		value >>= 1;
 	}
 	return (i);
 }
