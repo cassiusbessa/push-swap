@@ -104,11 +104,12 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	stack_a = stack_creator(argc - 1, argv);
-	//stack_b = create_circular();
+	stack_b = create_circular();
 	index_cl(&stack_a);
-	/*push_cl(&stack_a, &stack_b);
-	push_cl(&stack_a, &stack_b);*/
+	push_cl(&stack_a, &stack_b);
+	push_cl(&stack_a, &stack_b);
 	print_cl(stack_a);
+	ft_printf("número de bits: %u\n", node_max_bits(stack_a));
 	ft_printf("fim da lista a\n");
 	//print_cl(stack_b);
 	destroy_circular(stack_a);

@@ -28,6 +28,7 @@ typedef struct s_circular_list
 {
 	t_node			*head;
 	unsigned int	size;
+	t_node			*bigger;
 	t_node			*tail;
 }	t_circular_list;
 
@@ -44,5 +45,6 @@ void			reverse_rotate_cl(t_circular_list **cl);
 void			push_cl(t_circular_list **cl1, t_circular_list **cl2);
 void			swap_cl(t_circular_list **cl);
 void			index_cl(t_circular_list **cl);
+unsigned int	node_max_bits(t_circular_list *cl);
 
 #endif

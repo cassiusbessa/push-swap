@@ -21,6 +21,7 @@ t_circular_list	*create_circular(void)
 	{
 		cl->head = NULL;
 		cl->tail = NULL;
+		cl->bigger = NULL;
 		cl->size = 0;
 	}
 	return (cl);
@@ -76,27 +77,6 @@ void	print_cl(t_circular_list *cl)
 		if (current == cl->head)
 			break ;
 	}
+	ft_printf("list size: %u, bigger n: %d\n", cl->size, cl->bigger->value);
 	return ;
-}
-
-void	add_tail(t_circular_list **cl, t_node *new_node)
-{
-	if (*cl == NULL)
-		*cl = create_circular();
-	if ((*cl)->head == NULL)
-	{
-		(*cl)->head = new_node;
-		(*cl)->tail = new_node;
-		new_node->prev = new_node;
-		new_node->next = new_node;
-	}
-	else
-	{
-		new_node->prev = (*cl)->tail;
-		new_node->next = (*cl)->head;
-		(*cl)->tail->next = new_node;
-		(*cl)->tail = new_node;
-		(*cl)->head->prev = new_node;
-	}
-	(*cl)->size++;
 }
