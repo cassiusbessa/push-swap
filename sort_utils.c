@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 16:43:33 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/19 17:31:59 by caqueiro         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 static t_node	*get_min_node(t_node *n)
@@ -68,4 +56,22 @@ unsigned int	node_max_bits(t_circular_list *cl)
 		value >>= 1;
 	}
 	return (i);
+}
+
+int	is_sorted(t_circular_list *cl)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (!cl || !cl->head || !cl->tail || cl->head == cl->tail)
+		return (1);
+	current = cl->head;
+	while (current != cl->tail)
+	{
+		next = current->next;
+		if (next->value < current->value)
+			return (0);
+		current = next;
+	}
+	return (1);
 }

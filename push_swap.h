@@ -40,12 +40,14 @@ void			add_head(t_circular_list **cl, t_node *new_head);
 t_node			*remove_head(t_circular_list **cl);
 t_node			*remove_tail(t_circular_list **cl);
 void			destroy_circular(t_circular_list *cl);
-void			rotate_cl(t_circular_list **cl);
-void			reverse_rotate_cl(t_circular_list **cl);
-void			push_cl(t_circular_list **cl1, t_circular_list **cl2);
-void			swap_cl(t_circular_list **cl);
+void			rotate_cl(t_circular_list **cl, char stack);
+void			reverse_rotate_cl(t_circular_list **cl, char stack);
+void			push_cl(t_circular_list **cl1, t_circular_list **cl2, char stack);
+void			swap_cl(t_circular_list **cl, char stack);
 void			index_cl(t_circular_list **cl);
+int				is_sorted(t_circular_list *cl);
 unsigned int	node_max_bits(t_circular_list *cl);
-void    radix(t_circular_list **stack_a, t_circular_list **stack_b);
+void    		radix(t_circular_list **stack_a, t_circular_list **stack_b);
+void    		sort_3(t_circular_list **stack_a);
 
 #endif

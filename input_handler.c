@@ -106,8 +106,9 @@ int	main(int argc, char **argv)
 	stack_a = stack_creator(argc - 1, argv);
 	stack_b = create_circular();
 	index_cl(&stack_a);
+	sort_3(&stack_a);
 	ft_printf("fim da lista a\n");
-	radix(&stack_a, &stack_b);
+	//radix(&stack_a, &stack_b);
 	print_cl(stack_a);
 	destroy_circular(stack_a);
 }
