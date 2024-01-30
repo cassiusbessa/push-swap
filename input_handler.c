@@ -6,20 +6,13 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:55:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/19 19:34:05 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 20:52:30 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	handle_atoi_error(t_circular_list *stack)
-{
-	write(2, "Input not valid", 15);
-	destroy_circular(stack);
-	exit (0);
-}
-
-static int	find_separator(char *s, char c)
+int	find_separator(char *s, char c)
 {
 	int	i;
 
@@ -47,7 +40,7 @@ static	void	build_list(t_circular_list **stack_a, char *s, char c)
 			n = ft_atoi(temp);
 			free(temp);
 			if (n.err)
-				handle_atoi_error(*stack_a);
+				handle_error(*stack_a, NULL);
 			add_tail(stack_a, create_node(n.value));
 			s += skip;
 			ex++;
@@ -61,11 +54,33 @@ static t_circular_list	*split_num(char *s, char c)
 {
 	t_circular_list	*stack_a;
 
-	stack_a = create_circular();
 	if (!s)
 		return (NULL);
+	stack_a = create_circular();
 	build_list(&stack_a, s, ' ');
 	return (stack_a);
+}
+
+int	check_repeat(t_circular_list *cl)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (cl == NULL)
+		return (1);
+	if (cl->size == 1)
+		return (0);
+	current = cl->head;
+	while (current != NULL)
+	{
+		next = current->next;
+		if (current->value == next->value)
+			return (1);
+		current = next;
+		if (current == cl->head)
+			break ;
+	}
+	return (0);
 }
 
 t_circular_list	*stack_creator(int len, char **input)
@@ -85,30 +100,10 @@ t_circular_list	*stack_creator(int len, char **input)
 		{
 			n = ft_atoi(input[i]);
 			if (n.err)
-				handle_atoi_error(stack_a);
+				handle_error(stack_a, NULL);
 			add_tail(&stack_a, create_node(n.value));
 			i++;
 		}
 	}
 	return (stack_a);
-}
-
-int	main(int argc, char **argv)
-{
-	t_circular_list	*stack_a;
-	t_circular_list	*stack_b;
-
-	if (argc < 2)
-	{
-		write(1, "Input not valid\n", 15);
-		return (0);
-	}
-	stack_a = stack_creator(argc - 1, argv);
-	stack_b = create_circular();
-	index_cl(&stack_a);
-	sort_3(&stack_a);
-	ft_printf("fim da lista a\n");
-	//radix(&stack_a, &stack_b);
-	print_cl(stack_a);
-	destroy_circular(stack_a);
 }

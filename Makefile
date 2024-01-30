@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: caqueiro <caqueiro@student.42.rio>         +#+  +:+       +#+         #
+#    By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 19:50:42 by caqueiro          #+#    #+#              #
-#    Updated: 2024/01/09 20:06:50 by caqueiro         ###   ########.fr        #
+#    Updated: 2024/01/30 20:53:10 by caqueiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ PUSH_SWAP_SRCS =	input_handler.c\
 					handle_circular_list.c\
 					sort_utils.c\
 					sort_big.c\
-					sort_small.c
+					sort_small.c\
+					utils.c\
+					main.c
 
 CHECKERS_SRCS = checker.c
 

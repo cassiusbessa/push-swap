@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/30 18:34:39 by caqueiro          #+#    #+#             */
+/*   Updated: 2024/01/30 18:34:40 by caqueiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static t_node	*get_min_node(t_node *n)
@@ -35,7 +47,11 @@ void	index_cl(t_circular_list **cl)
 	{
 		min = get_min_node(current);
 		if (min)
+		{
+			if (i == 0)
+				(*cl)->smaller = min;
 			min->index = i++;
+		}
 		current = current->next;
 	}
 	(*cl)->bigger = min;

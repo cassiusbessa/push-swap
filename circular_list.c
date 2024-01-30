@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 21:06:53 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/19 19:39:22 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:33:41 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_circular_list	*create_circular(void)
 		cl->head = NULL;
 		cl->tail = NULL;
 		cl->bigger = NULL;
+		cl->smaller = NULL;
 		cl->size = 0;
 	}
 	return (cl);
@@ -77,6 +78,5 @@ void	print_cl(t_circular_list *cl)
 		if (current == cl->head)
 			break ;
 	}
-	ft_printf("list size: %u, bigger n: %d\n", cl->size, cl->bigger->value);
 	return ;
 }
