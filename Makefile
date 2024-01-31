@@ -6,9 +6,15 @@
 #    By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 19:50:42 by caqueiro          #+#    #+#              #
-#    Updated: 2024/01/30 20:53:10 by caqueiro         ###   ########.fr        #
+#    Updated: 2024/01/30 21:07:03 by caqueiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+GREEN		=	\e[92;5;118m
+YELLOW		=	\e[93;5;226m
+GRAY		=	\e[33;2;37m
+RESET		=	\e[0m
+CURSIVE		=	\e[33;3m
 
 PUSH_SWAP_SRCS =	input_handler.c\
 					circular_list.c\
@@ -34,7 +40,12 @@ CHECKER = checker
 CC	= cc
 RM	= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
+
+OBJS	= ${PUSH_SWAP_SRCS:.c=.o}
+
+.c.o:
+		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(PUSH_SWAP):
 		@make -C utils/libft
@@ -55,7 +66,8 @@ bonus: $(CHECKER)
 clean:
 		@make fclean -C utils/libft
 		@make fclean -C utils/ft_printf
-		@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
+		${RM} ${OBJS} ${BONUS_OBJS}
+		@printf "$(YELLOW)    - Objects removed.$(RESET)\n"
 
 fclean: clean
 	${RM} ${PUSH_SWAP} ${CHECKER}
