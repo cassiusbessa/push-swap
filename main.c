@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 19:36:23 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/30 20:15:30 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:25:14 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	main(int argc, char **argv)
 	t_circular_list	*stack_b;
 
 	if (argc < 2)
-	{
-		write(1, "Error\n", 6);
 		return (0);
-	}
 	stack_a = stack_creator(argc - 1, argv);
 	stack_b = create_circular();
 	index_cl(&stack_a);

@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:34:39 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/30 18:34:40 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/31 21:13:03 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ void	index_cl(t_circular_list **cl)
 unsigned int	node_max_bits(t_circular_list *cl)
 {
 	unsigned int	i;
-	unsigned int	value;
+	unsigned int	index;
 
 	if (!cl || !cl->head || !cl->tail || cl->head == cl->tail)
 		return (0);
 	i = 0;
-	value = cl->bigger->value;
-	while (value)
+	index = cl->bigger->index;
+	while (index)
 	{
 		i++;
-		value >>= 1;
+		index >>= 1;
 	}
 	return (i);
 }

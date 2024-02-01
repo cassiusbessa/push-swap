@@ -6,11 +6,31 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:39:21 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/30 18:41:18 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/31 22:06:06 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	sort_b(t_circular_list **stack_a, t_circular_list **stack_b,
+				unsigned int bits, unsigned int max_bits)
+{
+	unsigned int	initial_size;
+
+	initial_size = (*stack_b)->size;
+	while (initial_size-- && bits <= max_bits && !is_sorted(*stack_a))
+	{
+		if ((*stack_b)->head->index >> bits & 1)
+			push_cl(stack_b, stack_a, 'a');
+		else
+			rotate_cl(stack_b, 'b');
+	}
+	if (is_sorted(*stack_a))
+	{
+		while ((*stack_b)->size)
+			push_cl(stack_b, stack_a, 'a');
+	}
+}
 
 void	radix(t_circular_list **stack_a, t_circular_list **stack_b)
 {
@@ -31,8 +51,9 @@ void	radix(t_circular_list **stack_a, t_circular_list **stack_b)
 			else
 				push_cl(stack_a, stack_b, 'b');
 		}
-		while ((*stack_b)->size)
-			push_cl(stack_b, stack_a, 'a');
 		bits++;
+		sort_b(stack_a, stack_b, bits, max_bits);
 	}
+	while ((*stack_b)->size)
+		push_cl(stack_b, stack_a, 'a');
 }

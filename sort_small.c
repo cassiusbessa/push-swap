@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:34:19 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/30 18:38:55 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:21:53 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	sort_4(t_circular_list **stack_a, t_circular_list **stack_b, int index)
 	else
 	{
 		reverse_rotate_cl(stack_a, 'a');
-		sort_4(stack_a, stack_b, 0);
+		sort_4(stack_a, stack_b, index);
 	}
 }
 
