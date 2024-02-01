@@ -6,7 +6,7 @@
 #    By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 19:50:42 by caqueiro          #+#    #+#              #
-#    Updated: 2024/01/30 21:07:03 by caqueiro         ###   ########.fr        #
+#    Updated: 2024/01/31 22:22:32 by caqueiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ OBJS	= ${PUSH_SWAP_SRCS:.c=.o}
 
 $(PUSH_SWAP):
 		@make -C utils/libft
-		@make -C utils/ft_printf
 		${CC} ${PUSH_SWAP_SRCS} ${LIBFT} -o ${PUSH_SWAP}
 		@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
@@ -57,7 +56,6 @@ all: $(PUSH_SWAP)
 
 $(CHECKER):
 		@make -C utils/libft
-		@make -C utils/ft_printf
 		${CC} ${SERVER_SRCS_BONUS} ${LIBFT} -o ${PUSH_SWAP_BONUS}
 		${CC} ${CLIENT_SRCS_BONUS} ${LIBFT} -o ${PUSH_SWAP_BONUS}
 
@@ -65,7 +63,6 @@ bonus: $(CHECKER)
 
 clean:
 		@make fclean -C utils/libft
-		@make fclean -C utils/ft_printf
 		${RM} ${OBJS} ${BONUS_OBJS}
 		@printf "$(YELLOW)    - Objects removed.$(RESET)\n"
 
