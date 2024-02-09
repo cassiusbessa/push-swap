@@ -6,7 +6,7 @@
 #    By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/20 19:50:42 by caqueiro          #+#    #+#              #
-#    Updated: 2024/01/31 22:22:32 by caqueiro         ###   ########.fr        #
+#    Updated: 2024/02/08 19:48:42 by caqueiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ PUSH_SWAP_SRCS =	input_handler.c\
 					sort_utils.c\
 					sort_big.c\
 					sort_small.c\
-					utils.c\
-					main.c
+					handle_error.c\
+					main.c\
+					checker_utils.c
 
 CHECKERS_SRCS = checker.c
 

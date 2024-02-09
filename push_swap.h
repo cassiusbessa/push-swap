@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:14 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/30 20:51:25 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:24:01 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_circular_list
 }	t_circular_list;
 
 void			handle_error(t_circular_list *stack_a, void *stack_b);
+void			handle_checker_error(t_circular_list *stack_a, void *stack_b, char *i);
 int				check_repeat(t_circular_list *cl);
 t_circular_list	*stack_creator(int len, char **input);
 t_node			*create_node(int value);
@@ -43,11 +44,11 @@ void			add_head(t_circular_list **cl, t_node *new_head);
 t_node			*remove_head(t_circular_list **cl);
 t_node			*remove_tail(t_circular_list **cl);
 void			destroy_circular(t_circular_list *cl);
-void			rotate_cl(t_circular_list **cl, char stack);
-void			reverse_rotate_cl(t_circular_list **cl, char stack);
+void			rotate_cl(t_circular_list **cl, char stack, int print);
+void			reverse_rotate_cl(t_circular_list **cl, char stack, int print);
 void			push_cl(t_circular_list **cl1,
-					t_circular_list **cl2, char stack);
-void			swap_cl(t_circular_list **cl, char stack);
+					t_circular_list **cl2, char stack, int print);
+void			swap_cl(t_circular_list **cl, char stack, int print);
 void			index_cl(t_circular_list **cl);
 int				is_sorted(t_circular_list *cl);
 unsigned int	node_max_bits(t_circular_list *cl);

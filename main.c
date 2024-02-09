@@ -6,13 +6,13 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 19:36:23 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/31 20:25:14 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:31:21 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	t_circular_list	*stack_a;
 	t_circular_list	*stack_b;
@@ -34,4 +34,4 @@ int	main(int argc, char **argv)
 		radix(&stack_a, &stack_b);
 	destroy_circular(stack_a);
 	destroy_circular(stack_b);
-}
+}*/
