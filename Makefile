@@ -48,12 +48,14 @@ OBJS	= ${PUSH_SWAP_SRCS:.c=.o}
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-$(PUSH_SWAP):
+$(PUSH_SWAP): clean
 		@make -C utils/libft
 		${CC} ${PUSH_SWAP_SRCS} ${LIBFT} -o ${PUSH_SWAP}
 		@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
 all: $(PUSH_SWAP)
+		@make fclean -C utils/libft
+		${RM} ${OBJS} ${BONUS_OBJS}
 
 $(CHECKER):
 		@make -C utils/libft
@@ -72,5 +74,9 @@ fclean: clean
 	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
 
 re:	fclean all
+	@make fclean -C utils/libft
+	${RM} ${OBJS} ${BONUS_OBJS}
+	@printf "$(YELLOW)    - Objects removed.$(RESET)\n"
+	@printf "$(GREEN)    - Makefile recompiled.$(RESET)\n"
 
 .PHONY:	all clean fclean re

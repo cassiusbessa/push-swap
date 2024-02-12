@@ -24,12 +24,10 @@ int	find_separator(char *s, char c)
 
 static	void	build_list(t_circular_list **stack_a, char *s, char c)
 {
-	int			ex;
 	int			skip;
 	char		*temp;
 	t_int_valid	n;
 
-	ex = 0;
 	skip = 0;
 	while (*s)
 	{
@@ -43,10 +41,11 @@ static	void	build_list(t_circular_list **stack_a, char *s, char c)
 				handle_error(*stack_a, NULL);
 			add_tail(stack_a, create_node(n.value));
 			s += skip;
-			ex++;
 			continue ;
 		}
 		s++;
+		if (!ft_isdigit(*s))
+			handle_error(*stack_a, NULL);
 	}
 }
 
