@@ -38,12 +38,15 @@ int	main(int argc, char **argv)
 {
 	t_circular_list	*stack_a;
 	t_circular_list	*stack_b;
-	char							*input;
+	char			*input;
 
 	stack_a = stack_creator(argc - 1, argv);
 	stack_b = create_circular();
-	while (input = get_next_line(1))
+	while (1)
 	{
+		input = get_next_line(1);
+		if (!input)
+			break ;
 		exec_move(input, &stack_a, &stack_b);
 		free(input);
 	}

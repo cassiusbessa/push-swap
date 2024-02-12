@@ -33,7 +33,8 @@ typedef struct s_circular_list
 }	t_circular_list;
 
 void			handle_error(t_circular_list *stack_a, void *stack_b);
-void			handle_checker_error(t_circular_list *stack_a, void *stack_b, char *i);
+void			handle_checker_error(t_circular_list *stack_a,
+					void *stack_b, char *i);
 int				check_repeat(t_circular_list *cl);
 t_circular_list	*stack_creator(int len, char **input);
 t_node			*create_node(int value);
