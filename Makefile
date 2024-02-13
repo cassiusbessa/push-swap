@@ -25,12 +25,16 @@ PUSH_SWAP_SRCS =	input_handler.c\
 					sort_small.c\
 					handle_error.c\
 					main.c\
-					checker_utils.c
 
-CHECKERS_SRCS = checker.c
-
-SERVER_SRCS_BONUS = server_bonus.c
-CLIENT_SRCS_BONUS = client_bonus.c
+CHECKERS_SRCS =	input_handler.c\
+					circular_list.c\
+					moviments.c\
+					handle_circular_list.c\
+					sort_utils.c\
+					sort_big.c\
+					sort_small.c\
+					handle_error.c\
+					checker.c
 
 LIBFT = utils/libft/libft.a
 
@@ -51,16 +55,18 @@ OBJS	= ${PUSH_SWAP_SRCS:.c=.o}
 $(PUSH_SWAP): clean
 		@make -C utils/libft
 		${CC} ${PUSH_SWAP_SRCS} ${LIBFT} -o ${PUSH_SWAP}
+		@make fclean -C utils/libft
 		@printf "$(GREEN)    - Executable ready.\n$(RESET)"
 
-all: $(PUSH_SWAP)
+all: $(PUSH_SWAP) clean
 		@make fclean -C utils/libft
 		${RM} ${OBJS} ${BONUS_OBJS}
 
 $(CHECKER):
 		@make -C utils/libft
-		${CC} ${SERVER_SRCS_BONUS} ${LIBFT} -o ${PUSH_SWAP_BONUS}
-		${CC} ${CLIENT_SRCS_BONUS} ${LIBFT} -o ${PUSH_SWAP_BONUS}
+		${CC} ${CHECKERS_SRCS} ${LIBFT} -o ${CHECKER}
+		@make fclean -C utils/libft
+		@printf "$(GREEN)    - Bonus Executable ready.\n$(RESET)"
 
 bonus: $(CHECKER)
 

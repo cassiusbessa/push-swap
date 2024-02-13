@@ -44,7 +44,7 @@ static	void	build_list(t_circular_list **stack_a, char *s, char c)
 			continue ;
 		}
 		s++;
-		if (!ft_isdigit(*s))
+		if (!ft_isdigit(*s) && (*s) != '-')
 			handle_error(*stack_a, NULL);
 	}
 }
@@ -53,7 +53,7 @@ static t_circular_list	*split_num(char *s, char c)
 {
 	t_circular_list	*stack_a;
 
-	if (!s)
+	if (!s || !ft_strlen(s))
 		return (NULL);
 	stack_a = create_circular();
 	build_list(&stack_a, s, ' ');
@@ -98,7 +98,7 @@ t_circular_list	*stack_creator(int len, char **input)
 		while (i <= len)
 		{
 			n = ft_atoi(input[i]);
-			if (n.err)
+			if (n.err || !ft_strlen(input[i]))
 				handle_error(stack_a, NULL);
 			add_tail(&stack_a, create_node(n.value));
 			i++;

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_circular_list	*stack_a;
 	t_circular_list	*stack_b;
@@ -34,4 +34,4 @@
 		radix(&stack_a, &stack_b);
 	destroy_circular(stack_a);
 	destroy_circular(stack_b);
-}*/
+}
