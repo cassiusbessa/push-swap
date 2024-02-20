@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:52:40 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/20 16:24:09 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:53:48 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ int	main(int argc, char **argv)
 		exec_move(input, &stack_a, &stack_b);
 		free(input);
 	}
-	print_cl(stack_a);
-	ft_printf("stackb");
-	print_cl(stack_b);
 	if (is_sorted(stack_a) && !stack_b->size)
 	{
 		destroy_circular(stack_a);
