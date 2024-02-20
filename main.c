@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 19:36:23 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/08 20:31:21 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:59:51 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	stack_a = stack_creator(argc - 1, argv);
+	if (is_sorted(stack_a))
+	{
+		destroy_circular(stack_a);
+		return (1);
+	}
 	stack_b = create_circular();
 	index_cl(&stack_a);
-	if (check_repeat(stack_a))
-		handle_error(stack_a, stack_b);
 	if (stack_a->size == 3)
 		sort_3(&stack_a);
 	else if (stack_a->size == 4)

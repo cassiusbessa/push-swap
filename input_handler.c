@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:55:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/08 17:10:13 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:38:23 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ t_circular_list	*stack_creator(int len, char **input)
 			i++;
 		}
 	}
+	if (check_repeat(stack_a))
+		handle_error(stack_a, NULL);
 	return (stack_a);
 }
