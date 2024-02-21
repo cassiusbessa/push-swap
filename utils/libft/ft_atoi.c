@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:06:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/08 19:52:10 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:31:26 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_int_valid	ft_atoi(const char *nptr)
 		minus = minus * -1;
 		i++;
 	}
+	if (!ft_isdigit(nptr[i]) && !nptr[i])
+		return (n.err = 1, n);
 	while (nptr[i])
 	{
 		if (!ft_isdigit(nptr[i])
