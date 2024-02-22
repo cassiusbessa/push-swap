@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:55:22 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/22 16:20:45 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:49:58 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_repeat(t_circular_list *cl, int new_value)
 
 	if (cl == NULL)
 		return (1);
-	if (cl->size == 1)
+	if (cl->size == 0)
 		return (0);
 	current = cl->head;
 	while (current != NULL)
@@ -61,9 +61,9 @@ static	void	build_list(t_circular_list **stack_a, char *s, char c)
 			free(temp);
 			if (n.err)
 				handle_error(*stack_a, NULL);
-			add_tail(stack_a, create_node(n.value));
 			if (check_repeat(*stack_a, n.value))
 				handle_error(*stack_a, NULL);
+			add_tail(stack_a, create_node(n.value));
 			s += skip;
 			continue ;
 		}
@@ -102,9 +102,9 @@ t_circular_list	*stack_creator(int len, char **input)
 			n = ft_atoi(input[i]);
 			if (n.err || !ft_strlen(input[i]))
 				handle_error(stack_a, NULL);
-			add_tail(&stack_a, create_node(n.value));
 			if (check_repeat(stack_a, n.value))
 				handle_error(stack_a, NULL);
+			add_tail(&stack_a, create_node(n.value));
 			i++;
 		}
 	}
