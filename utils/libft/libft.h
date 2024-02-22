@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 21:15:46 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/31 22:40:32 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:49:31 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
-char		*get_next_line(int fd);
+char		*get_next_line(int fd, int free_static);
 
 //list
 // typedef struct s_list

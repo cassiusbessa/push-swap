@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 22:20:05 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/01/31 22:38:51 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:49:09 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,14 @@ static char	*get_line(t_list **lst)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int free_static)
 {
 	static t_list	*list[MAX_FD];
 	char			*buffer_line;
 	int				count_read;
 
+	if (free_static)
+		return(free_list(&list[fd]), NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	count_read = 1;
@@ -120,16 +122,10 @@ char	*get_next_line(int fd)
 	{
 		buffer_line = (char *)malloc(sizeof (char) * BUFFER_SIZE + 1);
 		if (!buffer_line)
-		{
-			free_list(&list[fd]);
-			return (NULL);
-		}
+			return (free_list(&list[fd]), NULL);
 		count_read = read(fd, buffer_line, BUFFER_SIZE);
 		if (count_read < 0)
-		{
-			free(buffer_line);
-			return (NULL);
-		}
+			return (free(buffer_line), NULL);
 		buffer_line[count_read] = '\0';
 		ft_lstadd_back(&list[fd], buffer_line);
 	}

@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 20:52:45 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/08 17:51:49 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:50:20 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	handle_checker_error(t_circular_list *stack_a, void *stack_b, char *i)
 	if (i)
 		free(i);
 	i = NULL;
+	get_next_line(1, 1);
 	exit(0);
 }
