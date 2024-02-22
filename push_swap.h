@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:59:14 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/08 21:24:01 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:11:02 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_circular_list
 void			handle_error(t_circular_list *stack_a, void *stack_b);
 void			handle_checker_error(t_circular_list *stack_a,
 					void *stack_b, char *i);
-int				check_repeat(t_circular_list *cl);
 t_circular_list	*stack_creator(int len, char **input);
 t_node			*create_node(int value);
 t_circular_list	*create_circular(void);
