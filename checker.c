@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:52:40 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/22 18:14:40 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:07:51 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	main(int argc, char **argv)
 
 	stack_a = stack_creator(argc - 1, argv);
 	stack_b = create_circular();
+	if (argc < 2)
+		return (1);
 	while (1)
 	{
 		input = get_next_line(1, 0);
