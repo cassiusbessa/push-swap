@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 22:52:40 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/22 21:07:51 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:08:58 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	exec_move(char *input, t_circular_list **stack_a,
 	else if (!ft_strncmp(input, "rrr\n", ft_strlen(input)))
 	{
 		reverse_rotate_cl(stack_a, 'a', 0);
-		return(reverse_rotate_cl(stack_b, 'b', 0));
+		return (reverse_rotate_cl(stack_b, 'b', 0));
 	}
 	return (handle_checker_error(*stack_a, *stack_b, input));
 }
@@ -58,14 +58,10 @@ int	main(int argc, char **argv)
 		free(input);
 	}
 	if (is_sorted(stack_a) && !stack_b->size)
-	{
-		destroy_circular(stack_a);
-		destroy_circular(stack_b);
-		free(input);
-		return (ft_printf("OK\n"));
-	}
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	destroy_circular(stack_a);
 	destroy_circular(stack_b);
 	free(input);
-	return (ft_printf("KO\n"));
 }

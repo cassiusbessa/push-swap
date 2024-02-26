@@ -6,7 +6,7 @@
 /*   By: caqueiro <caqueiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 22:20:05 by caqueiro          #+#    #+#             */
-/*   Updated: 2024/02/22 17:49:09 by caqueiro         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:03:09 by caqueiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	*get_next_line(int fd, int free_static)
 	int				count_read;
 
 	if (free_static)
-		return(free_list(&list[fd]), NULL);
+		return (free_list(&list[fd]), NULL);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	count_read = 1;
